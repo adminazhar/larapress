@@ -1,17 +1,22 @@
 <?php
 
-use App\Models\Post;
-use Illuminate\Contracts\View\View;
-public function index(): View
-{
-    return view('posts.index', [
-        'posts' => Post::published()->newest()->paginate(5),
-    ]);
-}
+namespace App\Http\Controllers;
 
-public function show(string $slug): View
+use Illuminate\Contracts\View\View;
+use App\Models\Post;
+class PostsController extends Controller
 {
-    return view('posts.show', [
-        'post' => Post::slug($slug)->status('publish')->firstOrFail(),
-    ]);
+    public function index(): View
+    {
+        return view('posts.index', [
+            'posts' => Post::published()->newest()->paginate(5),
+        ]);
+    }
+
+    public function show(string $slug): View
+    {
+        return view('posts.show', [
+            'post' => Post::slug($slug)->status('publish')->firstOrFail(),
+        ]);
+    }
 }
