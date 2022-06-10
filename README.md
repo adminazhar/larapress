@@ -1,6 +1,8 @@
 # WordPress + Laravel
 WordPress but with Laravel
 
+With the help of Corcel
+
 # Credentials
 Wordpress
 Username: admin
